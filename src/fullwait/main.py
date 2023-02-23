@@ -21,6 +21,7 @@ References:
 """
 
 import argparse
+import json
 import logging
 import sys
 
@@ -118,8 +119,7 @@ def main(args):
     _logger.debug("Starting script...")
     url = args.url
     result = lib.get_efa_version(url=url)
-    print(result)
-    print(lib.to_int(result))
+    print(json.dumps({"version": result, "version_as_int": lib.to_int(result)}))
     _logger.info("Script ends here")
 
 
