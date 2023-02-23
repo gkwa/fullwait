@@ -29,3 +29,10 @@ def get_efa_version(url: str) -> str:
         _logger.fatal(f"couldn't find version number in html page {url}")
 
     return version
+
+
+def to_int(version: str) -> int:
+    lst = [int(x, 10) for x in version.split(".")]
+    lst.reverse()
+    version = sum(x * (10**i) for i, x in enumerate(lst))
+    return version
